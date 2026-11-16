@@ -79,7 +79,7 @@ private:
         invoker_ = std::move(invoker);
     }
     template <typename T>
-    static T cast_arg(const std::any& val, const std::string& name) {
+    static std::decay_t<T> cast_arg(const std::any& val, const std::string& name) {
         using CleanT = std::decay_t<T>;
         try {
             if constexpr (std::is_same_v<CleanT, std::string>) {
